@@ -21,13 +21,13 @@ export class MovieListings extends React.Component {
   }
   render(){
     console.log(this.state.movies);
-    //const movieList = this.state.movies.map((movie, i ) => (
-     // <div className="list" key={i} >
-      //  <p>{movie.title}</p>
-     // </div>
-    //));
+    const MovieList = this.state.movies.map((movie, i ) => (
+      <div className="list" key={i} >
+        <p>{movie.title}</p>
+      </div>
+    ));
     return (
-        <div className='movies'></div>
+        <div className='movies'>{MovieList}</div>
      );
   }
 }
