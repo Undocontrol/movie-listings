@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios'
+import axios from 'axios';
+import { API_KEY, PATH_BASE, PATH_MOVIE, PATH_IMAGE, PATH_PLAYING } from './api';
+
 
 export class MovieListings extends React.Component {
   constructor(props){
@@ -11,7 +13,7 @@ export class MovieListings extends React.Component {
     }
   }
   componentDidMount(){
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=d45466cfe15159bca4b549e8255e74d2&language=en-US&page=1`)
+    axios.get(`${PATH_BASE}${PATH_MOVIE}${PATH_PLAYING}?language=en-US&api_key=${API_KEY}`)
       .then(res => {
         const movies = res.data.results;
         this.setState({ movies });
@@ -20,10 +22,10 @@ export class MovieListings extends React.Component {
     }));
   }
   render(){
-    console.log(this.state.movies);
+    //console.log(this.state.movies);
     const MovieList = this.state.movies.map((movie, i ) => (
       <div className="movie" key={i}>
-        <img src={'https://image.tmdb.org/t/p/original/' + movie.poster_path} alt="movie poster"/>
+        <img src={`${PATH_IMAGE}` + movie.poster_path} alt="movie poster"/>
         <div className="item">
           <div className="description">
             <h3 className="title" alt="movie title">{movie.title}</h3>
