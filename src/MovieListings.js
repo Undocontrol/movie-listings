@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import axios from 'axios'
 
 export class MovieListings extends React.Component {
@@ -6,7 +7,7 @@ export class MovieListings extends React.Component {
     super(props);
     this.state = {
       movies: [],
-      isLoading: true
+      isLoading: true,
     }
   }
   componentDidMount(){
@@ -14,7 +15,6 @@ export class MovieListings extends React.Component {
       .then(res => {
         const movies = res.data.results;
         this.setState({ movies });
-        console.log("this is in the state",this.state.movies);
     }).catch(error => this.setState({ 
       error, isLoading: false 
     }));
@@ -22,12 +22,19 @@ export class MovieListings extends React.Component {
   render(){
     console.log(this.state.movies);
     const MovieList = this.state.movies.map((movie, i ) => (
-      <div className="list" key={i} >
-        <p>{movie.title}</p>
+      <div className="movie" key={i}>
+        <img src={'https://image.tmdb.org/t/p/original/' + movie.poster_path} alt="movie poster"/>
+        <div className="item">
+          <div className="description">
+            <h3 className="title" alt="movie title">{movie.title}</h3>
+            <h4 className="releaseDate">{movie.release_date}</h4>
+            <span>{movie.genre_ids}</span>
+          </div>
+        </div>
       </div>
     ));
     return (
-        <div className='movies'>{MovieList}</div>
+        <div className='MovieCollection'>{MovieList}</div>
      );
   }
 }
