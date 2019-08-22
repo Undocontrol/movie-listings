@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import { API_KEY, PATH_BASE, PATH_MOVIE, PATH_IMAGE, PATH_PLAYING } from './api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class MovieListings extends React.Component {
   constructor(props){
@@ -22,12 +23,15 @@ export class MovieListings extends React.Component {
     }));
   }
 
-  render() {
+  render = () => {
     const MovieList = this.state.movies
     .sort((a,b) => a.popularity > b.popularity)
     .map((movie, i ) => (
       <div className="movie" key={i}>
-        <span className="fas fa-camera">{Math.round(movie.popularity)}</span>
+        <div className="starRating">
+        <FontAwesomeIcon className="star" icon="star" />
+        <span className="">{Math.round(movie.popularity)}</span>
+        </div>
         <img src={`${PATH_IMAGE}` + movie.poster_path} alt="movie poster"/>
         <div className="item">
           <div className="description">

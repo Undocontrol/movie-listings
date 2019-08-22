@@ -8,6 +8,7 @@ export class SideBar extends React.Component {
     super(props);
     this.state = {
       genres: [],
+      selectedGenres: [],
       isLoading: true,
     }
   }
@@ -22,37 +23,30 @@ export class SideBar extends React.Component {
     }));
   }
 
+  handleCheckBoxChange = (genre, e) => {
+    e.persist();
+    e.target.checked ? this.state.selectedGenres.push(genre.id) 
+    : this.state.selectedGenres.filter(item => item !== genre.id);
+  }
+
+
   render = () => {
-    const Checkbox = props => (
-      <input type="checkbox" {...props} />
-    )
-    const genreList = this.state.genres.map((genre, i ) => (
+    const genreList = this.state.genres.map((genre, i) => (
       <label key={i}>
-        <Checkbox
-          checked={this.state.checked}
-          onChange={this.handleCheckboxChange}
-        />
+        <input type="checkbox" onChange={(e) => this.handleCheckBoxChange(genre, e)}/>
         <span>{genre.name}</span>
     </label>
     ));
   return (
     <div className="sidebar">
       <div className='seperator'>
-          <div className='title'>Sort</div>
+            <div className='title'>Genres</div>
+            <div className="menu">{genreList}</div>
       </div>
-
-      <ul className="menu sort">
-          <li className="active"><a href="#">All</a></li>
-          <li><a href="#">Year</a></li>
-          <li><a href="#">Latest</a></li>
-          <li><a href="#">Top</a></li>
-          <li><a href="#">Rating</a></li>
-      </ul>
-
       <div className='seperator'>
-          <div className='title'>Genres</div>
+            <div className='title'>Rating</div>
       </div>
-        <div className="menu">{genreList}</div>
+
     </div>
     );
   } 

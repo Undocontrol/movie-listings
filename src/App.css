@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url('https://fonts.googleapis.com/css?family=Anton');
 
 /* FLEXBOX */
 .App {
@@ -9,6 +9,7 @@
   background: #1d1d1d;
   color: white;
   margin: 0 auto;
+  font-family: 'Anton', cursive;
 }
 
 .sidebar .menu-2 li a {
@@ -108,7 +109,6 @@
   padding: 5px;
   justify-content: flex-start;
   flex: 1;
-  margin-left: 293px;
 }
 
 h1 {
@@ -153,10 +153,24 @@ h1 {
   color: rgb(128, 19, 0);
 }
 
+.movie .starRating {
+  margin: 0 auto;
+  text-align: center;
+}
+.movie .starRating .star {
+  color: yellow;
+  padding: 0 10px;
+}
+
+.movie .starRating span {
+  color: white;
+}
+
 
 /* Media Queries */
 
 @media screen and ( min-width:30em) {
+  .movie-collect
   .MovieListings {
     flex: 1;
   }
@@ -176,12 +190,19 @@ h1 {
 }
 
 @media screen and ( min-width:62em) {
+  .MovieCollection {
+    margin-left: 293px;
+  }
   .movie {
     flex: 0 1 calc(17% - 1em);
   }
   .movie-container {
     display: flex;
     flex: 1;
+  }
+  .menu {
+    height: 200px;
+    overflow-x: scroll;
   }
   .sidebar {
     width: 300px;
