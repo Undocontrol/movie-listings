@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios';
 import { API_KEY, PATH_BASE, PATH_MOVIE, PATH_IMAGE, PATH_PLAYING } from './api';
 
-
 export class MovieListings extends React.Component {
   constructor(props){
     super(props);
@@ -12,7 +11,8 @@ export class MovieListings extends React.Component {
       isLoading: true,
     }
   }
-  componentDidMount(){
+
+  componentDidMount = () =>{
     axios.get(`${PATH_BASE}${PATH_MOVIE}${PATH_PLAYING}?language=en-US&api_key=${API_KEY}`)
       .then(res => {
         const movies = res.data.results;
@@ -21,10 +21,13 @@ export class MovieListings extends React.Component {
       error, isLoading: false 
     }));
   }
-  render(){
-    //console.log(this.state.movies);
-    const MovieList = this.state.movies.map((movie, i ) => (
+
+  render() {
+    const MovieList = this.state.movies
+    .sort((a,b) => a.popularity > b.popularity)
+    .map((movie, i ) => (
       <div className="movie" key={i}>
+        <span className="fas fa-camera">{Math.round(movie.popularity)}</span>
         <img src={`${PATH_IMAGE}` + movie.poster_path} alt="movie poster"/>
         <div className="item">
           <div className="description">

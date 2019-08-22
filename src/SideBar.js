@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import { API_KEY, PATH_BASE, PATH_PLAYING, PATH_GENRE } from './api';
+import { API_KEY, PATH_BASE, PATH_GENRE } from './api';
 
 export class SideBar extends React.Component {
   constructor(props){
@@ -11,7 +11,8 @@ export class SideBar extends React.Component {
       isLoading: true,
     }
   }
-  componentDidMount(){
+  
+  componentDidMount = () =>{
     axios.get(`${PATH_BASE}${PATH_GENRE}?language=en-US&api_key=${API_KEY}`)
       .then(res => {
         const genres = res.data.genres;
@@ -21,11 +22,18 @@ export class SideBar extends React.Component {
     }));
   }
 
-  render(){
+  render = () => {
+    const Checkbox = props => (
+      <input type="checkbox" {...props} />
+    )
     const genreList = this.state.genres.map((genre, i ) => (
-      <ul className="menu" key={i}>
-        <li><a>{genre.name}</a></li>
-      </ul>
+      <label key={i}>
+        <Checkbox
+          checked={this.state.checked}
+          onChange={this.handleCheckboxChange}
+        />
+        <span>{genre.name}</span>
+    </label>
     ));
   return (
     <div className="sidebar">
@@ -42,9 +50,9 @@ export class SideBar extends React.Component {
       </ul>
 
       <div className='seperator'>
-          <div className='title'>Category </div>
+          <div className='title'>Genres</div>
       </div>
-        <div>{genreList}</div>
+        <div className="menu">{genreList}</div>
     </div>
     );
   } 
