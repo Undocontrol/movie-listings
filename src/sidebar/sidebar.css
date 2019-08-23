@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+.sidebar {
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+}
+
+.sidebar .menu-2 li a {
+  color: #CCC;
+  text-decoration: none;
+  display: block;
+  padding: 2.5px 10px;
+}
+
+.sidebar .menu {
+  height: 300px;
+  overflow-x: scroll;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar label {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  padding: 5px 10px;
+}
+.sidebar span {
+  padding: 10px;
+}
+
+.sidebar label:hover {
+  color: red;
+  background: rgba(0, 0, 0, .3);
+  cursor: pointer;
+}
+
+.sidebar .menu li a {
+  color: #CCC;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.sidebar .menu li a span{
+  float: right;
+  font-size: 9pt;
+  color: gray;
+}
+
+.sidebar .menu.center a div{
+  margin-left: auto;
+  margin-right: 2.5em;
+  height: 92px;
+  width: 115px;
+}
+
+.sidebar .menu li a:hover {
+  color: red;
+  background: rgba(0, 0, 0, .3);
+  cursor: pointer;
+}
+.sidebar .menu li a:hover span{
+  color: white;
+}
+
+.sidebar li.active a{
+  color: rgb(128, 19, 0);
+  background: rgba(0, 0, 0, .3);
+}
+
+.seperator {
+  border-top: 1px solid #111111;
+  border-bottom: 1px solid #353535;
+  margin: 10px;
+  position: relative;
+}
+
+.seperator .title {
+  font-family: sans-serif;
+  position: absolute;
+  color: white;
+  text-transform: uppercase;
+  right: 10px;
+  left: 10px;
+  top: -4px;
+  margin: auto;
+  text-align: center;
+  width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 7pt;
+  background: #1d1d1d;
+}
+
+.sidebar {
+  background: #1d1d1d;
+}
