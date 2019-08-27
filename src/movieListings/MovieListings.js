@@ -22,7 +22,9 @@ export class MovieListings extends React.Component {
       error, isLoading: false 
     }));
   }
-
+  //This will handle sorting and filtering by genre and rating.. We want to filter the results so that if one genre has more than 
+  //one genre_id, we can match it to what has been selected in genres. 
+  //We then want to sort it by popularity(average votes) and then eventually render on the page. 
   filterSortMovies = () => {
     return this.state.movies
     .filter(movie => 
@@ -35,7 +37,6 @@ export class MovieListings extends React.Component {
   render = () => {
     //const MovieList = this.state.movies
     const filteredMovies = this.filterSortMovies()
-
     const MovieList = filteredMovies.map((movie, i ) => (
       <div className="movie" key={i}>
         <div className="starRating">

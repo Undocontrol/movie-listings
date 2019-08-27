@@ -25,13 +25,16 @@ export class SideBar extends React.Component {
       error, isLoading: false 
     })); 
   }
-
+  //This handles if all the genres has been checked- if it has then 
+  //pass the genre id and marked as checked. 
   handleCheckBoxChange = (genre, e) => {
     e.persist()
     genre.isChecked = e.target.checked
     this.props.updateGenres(genre.id, e.target.checked)
   }
-
+  //If the select all checkbox has been checked, then we want to loop
+  //through each genre and by default make all the genres checkboxed. Then we save
+  //this to the state.  
   selectAllBoxChange = (e) => {
     e.persist()
     this.state.genres.forEach(genre => {

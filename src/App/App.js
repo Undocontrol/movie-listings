@@ -1,3 +1,8 @@
+/**
+ * This component is the first to load when our app is running. It acts as the parent component to Sidebar.js
+ * and movieListings.js. 
+ */
+
 import React from 'react';
 import '../App/App.css';
 import {MovieListings} from '../movieListings/MovieListings';
