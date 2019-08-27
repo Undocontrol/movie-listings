@@ -35,8 +35,9 @@ class App extends React.Component {
           <h1>Movies Showing Now</h1>
           <div className="movie-container">
             <SideBar 
-            setDefaultGenres
-            updateGenres={this.updateMovieListings}>
+              setDefaultGenres
+              updateGenres={this.updateMovieListings}
+            >
              </SideBar>
             <MovieListings selectedGenres={this.state.selectedGenres}> </MovieListings>
           </div>

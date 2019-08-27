@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Anton');
 
-.sidebar {
-  width: 300px;
-  position: fixed;
-  z-index: 1;
-}
-
 .sidebar .menu-2 li a {
   color: #CCC;
   text-decoration: none;

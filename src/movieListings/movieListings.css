@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+.movieCollection {
+  background: #1d1d1d;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.movieCollection .movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 0;
+  background-size: 100% 100%;
+  font-size: 10pt;
+  margin: 4.5px;
+  color: #000;
+  position: relative;
+}
+
+.movie img {
+  max-width: 100%;
+}
+
+.movie .description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0px;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, .85);
+  color: white;
+  overflow: hidden;
+  transition: all .3s;
+}
+
+.movie:hover .description {
+  height: 120px;
+  padding: 10px;
+  cursor: pointer;
+  color: rgb(128, 19, 0);
+}
+
+.movie .starRating {
+  margin: 0 auto;
+  text-align: center;
+}
+.movie .starRating .star {
+  color: yellow;
+  padding: 0 10px;
+}
+
+.movie .starRating span {
+  color: white;
+}
+
+/* Media Queries */
+
+@media screen and ( min-width:30em) {
+  .movieCollection {
+    flex: 1;
+  }
+  .movie {
+    flex: 0 1 calc(100% - 1em);
+  }
+}
+
+@media screen and ( min-width:48em) {
+  .movie-container {
+    flex-direction: row;
+    flex: 1;
+  }
+  .movie {
+    flex: 0 1 calc(25% - 1em);
+  }
+}
+
+@media screen and ( min-width:62em) {
+  .movieCollection {
+    margin-left: 293px;
+  }
+  .movie {
+    flex: 0 1 calc(17% - 1em);
+  }
+  .sidebar {
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+  }
+}

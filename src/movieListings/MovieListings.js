@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App/App.css';
+import '../movieListings/movieListings.css';
 import axios from 'axios';
 import { API_KEY, PATH_BASE, PATH_MOVIE, PATH_IMAGE, PATH_PLAYING } from '../api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,15 +22,21 @@ export class MovieListings extends React.Component {
       error, isLoading: false 
     }));
   }
+
+  filterSortMovies = () => {
+    return this.state.movies
+    .filter(movie => 
+       this.props.selectedGenres.some(genre=> movie.genre_ids.includes(genre))
+    )
+    .sort((a,b) => a.popularity > b.popularity)
+  }
   
 
   render = () => {
-    const MovieList = this.state.movies
-    //.filter(movie => 
-    //   this.props.selectedGenres.some(genre=> movie.genre_ids.includes(genre))
-    //  )
-    .sort((a,b) => a.popularity > b.popularity)
-    .map((movie, i ) => (
+    //const MovieList = this.state.movies
+    const filteredMovies = this.filterSortMovies()
+
+    const MovieList = filteredMovies.map((movie, i ) => (
       <div className="movie" key={i}>
         <div className="starRating">
           <FontAwesomeIcon 

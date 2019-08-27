@@ -39,6 +39,7 @@
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.10.1",
     "css-loader": "^3.2.0",
+    "jest": "^24.9.0",
     "less": "^3.10.1",
     "less-loader": "^5.0.0",
     "react-test-renderer": "^16.9.0",
